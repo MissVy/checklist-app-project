@@ -26,7 +26,6 @@ function App() {
 
     else if (name && isEditing) {
       // if there is a name and we're in edit mode, execute the codes in here
-      showAlert(true, "success", "Updated")
       setList(list.map( (item) => {
         if (item.id === editID) {
           return{...item, title:name}
@@ -36,8 +35,7 @@ function App() {
       setName("")
       setEditID(null)
       setIsEditing(false)
-
-      console.log("is now in edit mode")
+      showAlert(true, "success", "Updated")
     }
 
     else {

@@ -4,12 +4,15 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 
 const List = ({items, removeItem, editItem }) => {
   return (
-    <ol className="grocery-list">
+    <div className="grocery-list">
       {items.map((item) => {
         const {id, title} = item
         return (
           <div key={id} className="grocery-item">
-            <li className="title"> {title} </li>
+            <div class="item-name">
+              <input type="checkbox" id={title} name={title}  />
+              <label className="title">  {title} </label>
+            </div>
             <div className="btn-container">
               <button type="button" className="edit-btn" onClick={() => editItem(id)}> <FaEdit /> </button>
               <button type="button" className="delete-btn" onClick={() => removeItem(id)}> <FaTrash /> </button>
@@ -17,7 +20,7 @@ const List = ({items, removeItem, editItem }) => {
           </div>
         )
       })}
-    </ol>
+    </div>
   )
 }
 

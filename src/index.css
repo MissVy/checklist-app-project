@@ -221,8 +221,18 @@ Grocery List
   background-color: var(--clr-white);
 }
 
+.item-name {
+  float: left;
+}
+
+.item-name:checkbox {
+  height: 30px;
+  width: 30px;
+}
+
 .btn-container {
   height: 30px;
+  float: right;
 }
 
 .submit-btn {
@@ -251,11 +261,11 @@ Grocery List
 
 .grocery-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 0.5rem;
   transition: var(--transition);
-  padding: 0.25rem 1rem;
+  padding: 0.25rem;
   text-transform: capitalize;
   border-bottom: 1px #3e4451 solid;
   height: 30px;
