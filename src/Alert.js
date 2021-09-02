@@ -9,7 +9,7 @@ import React, { useEffect } from 'react'
   }, [alertTime])
 
   return (
-      <p className={`alert alert-${type}`} >   {msg}   <span style={{display: type==='success'? "contents" : "none"}}> has been added to the list </span> </p>
+      <p className={`alert alert-${type}`} >   {msg}  </p>
   )
 }
 

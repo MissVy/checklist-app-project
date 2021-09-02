@@ -27,13 +27,22 @@ function App() {
     else if (name && isEditing) {
       // if there is a name and we're in edit mode, execute the codes in here
       showAlert(true, "success", "Updated")
-      // showAlert({show: true, msg: name, type:'success'})
+      setList(list.map( (item) => {
+        if (item.id === editID) {
+          return{...item, title:name}
+        }
+        return item
+      }))
+      setName("")
+      setEditID(null)
+      setIsEditing(false)
+
       console.log("is now in edit mode")
     }
 
     else {
       //if there is a name and we're not in edit mode, then save the item(name) to the list
-      showAlert(true, "success", name)
+      showAlert(true, "success", "Added")
       const newItem = {id: new Date().getTime().toString(), title:name}
       setList([...list, newItem])
       setName('')
@@ -46,7 +55,10 @@ function App() {
   }
 
   const editItem = (id) => {
-    console.log("Item updated")
+    const specificItem = list.find((item) => item.id === id)
+    setIsEditing(true)
+    setEditID(id)
+    setName(specificItem.title)
   }
 
   const clearList = () => {
@@ -82,7 +94,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list}  removeItem={removeItem}/>
+          <List items={list}  removeItem={removeItem} editItem={editItem}/>
           <button className="clear-btn" onClick={clearList}> Clear list </button>
         </div>
       )}
